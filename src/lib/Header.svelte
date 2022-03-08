@@ -24,7 +24,7 @@
 		}
 	};
 
-	let showStatsModal = true;
+	let showStatsModal = false;
 	const handleToggleStatsModal = () => {
 		showStatsModal = !showStatsModal;
 	};
