@@ -53,6 +53,20 @@
 				const totalPoodleWins = localStorage.getItem('totalPoodleWins');
 				const currentPoodleStreaks = localStorage.getItem('currentPoodleStreaks');
 				const maxPoodleStreaks = localStorage.getItem('maxPoodleStreaks');
+				const totalPoodleObj = localStorage.getItem('totalPoodleObj');
+				localStorage.setItem('lastPoodleTries', (currentTry + 1).toString());
+
+				if (!totalPoodleObj) {
+					const newObj = {
+						1: currentTry === 0 ? 1 : 0,
+						2: currentTry === 1 ? 1 : 0,
+						3: currentTry === 2 ? 1 : 0
+					};
+					localStorage.setItem('totalPoodleObj', JSON.stringify(newObj));
+				} else {
+					let old = JSON.parse(totalPoodleObj);
+					old[currentTry] = old[currentTry + 1] + 1;
+				}
 
 				if (!totalPoodle) {
 					localStorage.setItem('totalPoodle', '1');
@@ -114,6 +128,32 @@
 			localStorage.setItem('currentPoodleStreaks', '1');
 			localStorage.setItem('poodleStatus', 'lose');
 			localStorage.setItem('lastPoodle', length.toString());
+			localStorage.setItem('lastPoodleTries', '0');
+		}
+	};
+
+	const share = () => {
+		if (browser) {
+			const lastPoodleTries = localStorage.getItem('lastPoodleTries')
+				? parseInt(localStorage.getItem('lastPoodleTries'))
+				: 0;
+			console.log(lastPoodleTries);
+			const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+			const shareString = `Poodle #${length - 2032}
+
+${
+	lastPoodleTries === 0 ? '🚽🚽🚽' : '💩'.repeat(lastPoodleTries) + '🚽'.repeat(3 - lastPoodleTries)
+}
+
+https://ihate.games/poodle`;
+			if (isMobile) {
+				navigator.share({
+					text: shareString
+				});
+			} else {
+				navigator.clipboard.writeText(shareString);
+				alert('Copied to clipboard.');
+			}
 		}
 	};
 </script>
@@ -219,10 +259,18 @@
 			</p>
 			<Timer />
 			<p class="mt-2">till next poodle</p>
+			<button
+				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
+				on:click={share}>Share</button
+			>
 		{:else if currentTry === 3 && !guessed}
 			<p class="mt-8 font-bold text-xl">better luck tomorrow!</p>
 			<Timer />
 			<p class="mt-2">till next poodle</p>
+			<button
+				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
+				on:click={share}>Share</button
+			>
 		{:else}
 			<button
 				class="p-4 disabled:hover:scale-100 disabled:hover:opacity-70 disabled:bg-neutral-500 disabled:text-white disabled:font-normal font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
