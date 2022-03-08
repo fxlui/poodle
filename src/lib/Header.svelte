@@ -39,11 +39,11 @@
 		<svelte:fragment slot="body">
 			<h2 class="font-bold mb-4">HOW TO PLAY</h2>
 			<div class="max-w-xl">
-				<p>Guess the Poodle (length of poop) in 3 tries.</p>
+				<p>Guess the Turdle (length of turd) in 3 tries.</p>
 				<p class="mt-3">Each guess can be 1-6 boxes in length. Hit the Poop button to submit.</p>
 				<p class="mt-3">
 					After each guess, the colour of the boxes will change to show how close your guess was to
-					the Poodle.
+					the Turdle.
 				</p>
 			</div>
 			<Help />
