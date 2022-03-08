@@ -160,11 +160,11 @@ https://ihate.games/poodle`;
 </script>
 
 <svelte:head>
-	<title>Poodle</title>
-	<meta property="og:title" content="Poodle" />
+	<title>Turdle</title>
+	<meta property="og:title" content="Turdle" />
 	<meta
 		property="og:description"
-		content="Guess the Poodle (length of poop) in 3 tries. New Poodle available every day!"
+		content="Guess the Turdle (length of turd) in 3 tries. New Turdle available every day!"
 	/>
 	<meta property="og:image" content="/buttocks.png" />
 </svelte:head>
