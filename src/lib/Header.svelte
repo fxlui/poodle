@@ -32,7 +32,7 @@
 
 <div class="w-screen flex justify-between items-center px-5 py-4 border-b-2 border-neutral-700">
 	<button class="w-6 h-6" on:click={() => handleToggleHelpModal()}><FaRegQuestionCircle /></button>
-	<span class="font-branding font-500 text-2xl">Poodle</span>
+	<span class="font-branding font-500 text-2xl">Turdle</span>
 	<button class="w-6 h-6" on:click={() => handleToggleStatsModal()}><FaRegChartBar /></button>
 
 	<Modal open={showHelpModal} on:close={() => handleToggleHelpModal()}>
