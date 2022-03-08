@@ -14,5 +14,5 @@
 	<h1>i hate games</h1>
 	<h2>sorry i don't play valorant anymore</h2>
 	<h2 class="opacity-50">phas is still ok tho</h2>
-	<a href="/poodle" class="mt-5">poodle</a>
+	<a href="/turdle" class="mt-5">Turdle</a>
 </section>
