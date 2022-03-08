@@ -259,7 +259,7 @@ https://ihate.games/poodle`;
 				{/if}
 			</p>
 			<Timer />
-			<p class="mt-2">till next poodle</p>
+			<p class="mt-2">till next Turdle</p>
 			<button
 				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
 				on:click={share}>Share</button
@@ -267,7 +267,7 @@ https://ihate.games/poodle`;
 		{:else if currentTry === 3 && !guessed}
 			<p class="mt-8 font-bold text-xl">better luck tomorrow!</p>
 			<Timer />
-			<p class="mt-2">till next poodle</p>
+			<p class="mt-2">till next Turdle</p>
 			<button
 				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
 				on:click={share}>Share</button
