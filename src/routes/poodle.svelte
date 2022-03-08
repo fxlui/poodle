@@ -140,13 +140,13 @@
 				: 0;
 			console.log(lastPoodleTries);
 			const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
-			const shareString = `Poodle #${length - 2032}
+			const shareString = `Turdle #${length - 2032}
 
 ${
 	lastPoodleTries === 0 ? '🚽🚽🚽' : '💩'.repeat(lastPoodleTries) + '🚽'.repeat(3 - lastPoodleTries)
 }
 
-https://ihate.games/poodle`;
+https://ihate.games/turdle`;
 			if (isMobile) {
 				navigator.share({
 					text: shareString
