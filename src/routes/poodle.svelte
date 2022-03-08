@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let title = 'Poodle';
 	import Header from '$lib/Header.svelte';
 	import Timer from '$lib/Timer.svelte';
 	import sha1 from 'sha1';
@@ -140,13 +141,13 @@
 				: 0;
 			console.log(lastPoodleTries);
 			const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
-			const shareString = `Turdle #${length - 2032}
+			const shareString = `${title} #${length - 2032}
 
 ${
 	lastPoodleTries === 0 ? '🚽🚽🚽' : '💩'.repeat(lastPoodleTries) + '🚽'.repeat(3 - lastPoodleTries)
 }
 
-https://ihate.games/turdle`;
+https://ihate.games/${title.toLowerCase()}`;
 			if (isMobile) {
 				navigator.share({
 					text: shareString
@@ -160,17 +161,17 @@ https://ihate.games/turdle`;
 </script>
 
 <svelte:head>
-	<title>Turdle</title>
-	<meta property="og:title" content="Turdle" />
+	<title>{title}</title>
+	<meta property="og:title" content={title} />
 	<meta
 		property="og:description"
-		content="Guess the Turdle (length of turd) in 3 tries. New Turdle available every day!"
+		content="Guess the {title} (length of poop) in 3 tries. New {title} available every day!"
 	/>
 	<meta property="og:image" content="/buttocks.png" />
 </svelte:head>
 
 <div class="h-screen-ios h-screen flex flex-col">
-	<Header />
+	<Header {title} />
 	<div class="flex-1 poodle flex flex-col justify-center items-center">
 		<img class="w-24" src="buttocks.png" alt="butt" />
 		<div class="mt-4 flex space-x-10">
@@ -259,7 +260,7 @@ https://ihate.games/turdle`;
 				{/if}
 			</p>
 			<Timer />
-			<p class="mt-2">till next Turdle</p>
+			<p class="mt-2">till next {title}</p>
 			<button
 				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
 				on:click={share}>Share</button
@@ -267,7 +268,7 @@ https://ihate.games/turdle`;
 		{:else if currentTry === 3 && !guessed}
 			<p class="mt-8 font-bold text-xl">better luck tomorrow!</p>
 			<Timer />
-			<p class="mt-2">till next Turdle</p>
+			<p class="mt-2">till next {title}</p>
 			<button
 				class="p-4 font-bold bg-amber-400 hover:scale-110 transition-all text-black rounded-md mt-10"
 				on:click={share}>Share</button

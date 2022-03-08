@@ -2,4 +2,4 @@
 	import Poodle from './poodle.svelte';
 </script>
 
-<Poodle />
+<Poodle title={'Turdle'} />

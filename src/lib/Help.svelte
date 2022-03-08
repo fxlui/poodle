@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		{/each}
-		<p class="pt-2 text-sm">Turdle!</p>
+		<p class="pt-2 text-sm">Correct!</p>
 	</div>
 	<div class="space-y-1 flex flex-col items-center">
 		{#each try2 as value, i}
