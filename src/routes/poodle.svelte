@@ -18,7 +18,7 @@
 	const today = new Date();
 	const length = today.getDate() + today.getMonth() + 1 + today.getFullYear();
 	const tempresult = sha1(length.toString()).replace(/\D/g, '');
-	const result = tempresult.replaceAll('0', '1')[0] % 6;
+	const result = tempresult.replace(/0/g, '1')[0] % 6;
 
 	let currentTry = 0;
 	let try1 = undefined;
