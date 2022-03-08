@@ -65,7 +65,8 @@
 					localStorage.setItem('totalPoodleObj', JSON.stringify(newObj));
 				} else {
 					let old = JSON.parse(totalPoodleObj);
-					old[currentTry] = old[currentTry + 1] + 1;
+					old[currentTry + 1] = old[currentTry + 1] + 1;
+					localStorage.setItem('totalPoodleObj', JSON.stringify(old));
 				}
 
 				if (!totalPoodle) {

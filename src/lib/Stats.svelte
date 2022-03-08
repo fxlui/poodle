@@ -5,8 +5,16 @@
 	let totalPoodleWins = 0;
 	let currentPoodleStreaks = 0;
 	let maxPoodleStreaks = 0;
+	let totalPoodleObj = {
+		1: 0,
+		2: 0,
+		3: 0
+	};
 
 	if (browser) {
+		if (localStorage.getItem('totalPoodleObj')) {
+			totalPoodleObj = JSON.parse(localStorage.getItem('totalPoodleObj'));
+		}
 		if (localStorage.getItem('totalPoodle')) {
 			totalPoodle = parseInt(localStorage.getItem('totalPoodle'));
 		}
@@ -44,4 +52,23 @@
 			<span class="text-sm">max<br />streak</span>
 		</div>
 	</div>
+	{#if totalPoodleObj}
+		<div class="space-y-2">
+			{#each [1, 2, 3] as value}
+				<div class="flex items-center">
+					{value}
+					<div class="ml-2 pr-1 bg-neutral-600">
+						<span class="text-neutral-100 ml-1">{totalPoodleObj[value]}</span>
+					</div>
+					{#if totalPoodleObj[value]}
+						{#each Array(totalPoodleObj[value]) as _}
+							<div class="bg-neutral-600 px-1">
+								<span class="opacity-0 pointer-events-none">.</span>
+							</div>
+						{/each}
+					{/if}
+				</div>
+			{/each}
+		</div>
+	{/if}
 </div>
