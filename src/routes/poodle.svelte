@@ -19,7 +19,8 @@
 	const today = new Date();
 	const length = today.getDate() + today.getMonth() + 1 + today.getFullYear();
 	const tempresult = sha1(length.toString()).replace(/\D/g, '');
-	const result = tempresult.replace(/0/g, '1')[0] % 6;
+	let result = tempresult.replace(/0/g, '1')[0] % 6;
+	result = result === 0 ? 1 : result;
 
 	let currentTry = 0;
 	let try1 = undefined;
@@ -32,6 +33,15 @@
 			localStorage.getItem('lastPoodle') &&
 			localStorage.getItem('lastPoodle') === length.toString()
 		) {
+			if (!localStorage.getItem('bugFix1Applied') && length === 2044) {
+				localStorage.removeItem('poodleStatus');
+				localStorage.setItem('lastPoodle', '2043');
+				const totalPoodle = localStorage.getItem('totalPoodle');
+				const maxPoodleStreaks = localStorage.getItem('maxPoodleStreaks');
+				localStorage.setItem('totalPoodle', (parseInt(totalPoodle) - 1).toString());
+				localStorage.setItem('currentPoodleStreaks', parseInt(maxPoodleStreaks).toString());
+				localStorage.setItem('bugFix1Applied', 'true');
+			}
 			if (localStorage.getItem('poodleStatus') === 'win') {
 				guessed = true;
 				for (let i = 0; i < result; i++) check[i] = true;
